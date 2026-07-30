@@ -1,0 +1,11 @@
+# Generated outputs from plot_voltage_profile.py
+voltage_profile.csv
+voltage_profile.png
+
+# OpenDSS run artifacts
+DSSMonitors*/
+*.DSV
+
+# Python
+__pycache__/
+*.pyc

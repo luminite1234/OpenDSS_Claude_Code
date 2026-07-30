@@ -7,6 +7,7 @@ commented source so it doubles as a tutorial on **how to write OpenDSS code**.
 |------|---------|
 | `IEEE13Nodeckt.dss` | Master script: circuit, transformers, regulators, lines, loads, capacitors, and the solve command |
 | `IEEELineCodes.dss` | Line impedance / capacitance matrices referenced by the lines |
+| `plot_voltage_profile.py` | Solves the model and dumps the voltage profile to CSV + PNG |
 
 ## Running it
 
@@ -28,6 +29,25 @@ print('Converged:', dss.Solution.Converged())
 Expected result: the solution converges in ~11 iterations with total feeder
 power ≈ 3.6 MW / 1.7 Mvar, losses ≈ 112 kW, and bus voltages between about
 0.96 and 1.04 pu — matching the published IEEE 13-node benchmark.
+
+## Plotting the voltage profile
+
+`plot_voltage_profile.py` solves the model and writes two files:
+
+- `voltage_profile.csv` — one row per energized node (bus, phase, base kV,
+  pu magnitude, angle, distance from the substation)
+- `voltage_profile.png` — per-unit voltage vs. distance, one series per phase,
+  with the ANSI 0.95–1.05 pu band shaded
+
+```bash
+pip install OpenDSSDirect.py matplotlib
+python plot_voltage_profile.py           # or: python plot_voltage_profile.py path/to/IEEE13Nodeckt.dss
+```
+
+It attaches an `EnergyMeter` at the head of the feeder (required for OpenDSS to
+compute per-bus distances), re-solves, and prints a one-line summary. The plot
+makes the feeder's phase unbalance obvious: phase B rides high while phase C
+sags toward 0.96 pu at the feeder ends.
 
 ---
 
