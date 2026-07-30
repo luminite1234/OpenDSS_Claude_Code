@@ -1,0 +1,46 @@
+! ============================================================================
+!  IEEE 13-Node Test Feeder - Line Codes
+! ----------------------------------------------------------------------------
+!  A "LineCode" stores the per-unit-length series impedance (R, X) and shunt
+!  capacitance (C) matrices of a given conductor configuration. Lines then
+!  reference a LineCode instead of repeating the matrices, and OpenDSS scales
+!  the matrices by each line's Length.
+!
+!  Matrices are given in lower-triangular form:  (row1 | row2 | row3)
+!  Units are ohms per mile (r/x) and nF per mile (C).
+! ============================================================================
+
+New linecode.601 nphases=3 units=mi
+~ rmatrix = (0.3465 | 0.1560 0.3375 | 0.1580 0.1535 0.3414)
+~ xmatrix = (1.0179 | 0.5017 1.0478 | 0.4236 0.3849 1.0348)
+~ cmatrix = (6.2998 | -1.9958 5.9597 | -1.2595 -0.7417 5.6386)
+
+New linecode.602 nphases=3 units=mi
+~ rmatrix = (0.7526 | 0.1580 0.7475 | 0.1560 0.1535 0.7436)
+~ xmatrix = (1.1814 | 0.4236 1.1983 | 0.5017 0.3849 1.2112)
+~ cmatrix = (5.6990 | -1.0817 5.1795 | -1.6905 -0.6588 5.4246)
+
+New linecode.603 nphases=2 units=mi
+~ rmatrix = (1.3294 | 0.2066 1.3238)
+~ xmatrix = (1.3471 | 0.4591 1.3569)
+~ cmatrix = (4.7097 | -0.8999 4.6658)
+
+New linecode.604 nphases=2 units=mi
+~ rmatrix = (1.3238 | 0.2066 1.3294)
+~ xmatrix = (1.3569 | 0.4591 1.3471)
+~ cmatrix = (4.6658 | -0.8999 4.7097)
+
+New linecode.605 nphases=1 units=mi
+~ rmatrix = (1.3292)
+~ xmatrix = (1.3475)
+~ cmatrix = (4.5193)
+
+New linecode.606 nphases=3 units=mi
+~ rmatrix = (0.7982 | 0.3192 0.7891 | 0.2849 0.3192 0.7982)
+~ xmatrix = (0.4463 | 0.0328 0.4041 | -0.0143 0.0328 0.4463)
+~ cmatrix = (96.8897 | 0 96.8897 | 0 0 96.8897)
+
+New linecode.607 nphases=1 units=mi
+~ rmatrix = (1.3425)
+~ xmatrix = (0.5124)
+~ cmatrix = (88.9912)
